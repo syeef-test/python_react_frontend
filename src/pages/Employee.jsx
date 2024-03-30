@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EmployeeList from "./EmployeeList";
+import EmployeeForm from "./EmployeeForm";
 
 function Employee() {
   const [employees, setEmployees] = useState([]);
@@ -15,13 +16,14 @@ function Employee() {
   };
 
   useEffect(() => {
-    //fetchEmployees();
+    fetchEmployees();
   }, []);
 
   return (
-    <div>
+    <>
       <EmployeeList employees={employees} />
-    </div>
+      <EmployeeForm />
+    </>
   );
 }
 
