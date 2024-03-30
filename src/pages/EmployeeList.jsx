@@ -1,4 +1,23 @@
 const EmployeeList = ({ employees, updateEmployee, updateCallback }) => {
+  const onDelete = async (id) => {
+    try {
+      const options = {
+        method: "DELETE",
+      };
+      const response = await fetch(
+        `http://127.0.0.1:5000/delete_employee/${id}`,
+        options
+      );
+
+      if (response.status === 200) {
+        updateCallback();
+      } else {
+        console.log("Failed to delete");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <h2>Employees</h2>
@@ -19,7 +38,7 @@ const EmployeeList = ({ employees, updateEmployee, updateCallback }) => {
               <td>{employee.designation}</td>
               <td>
                 <button onClick={() => updateEmployee(employee)}>Update</button>
-                <button>Delete</button>
+                <button onClick={() => onDelete(employee.id)}>Delete</button>
               </td>
             </tr>
           ))}
