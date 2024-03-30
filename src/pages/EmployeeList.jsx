@@ -1,4 +1,4 @@
-const EmployeeList = ({ employees }) => {
+const EmployeeList = ({ employees, updateEmployee, updateCallback }) => {
   return (
     <div>
       <h2>Employees</h2>
@@ -18,7 +18,7 @@ const EmployeeList = ({ employees }) => {
               <td>{employee.email}</td>
               <td>{employee.designation}</td>
               <td>
-                <button>Update</button>
+                <button onClick={() => updateEmployee(employee)}>Update</button>
                 <button>Delete</button>
               </td>
             </tr>
